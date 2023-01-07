@@ -2,6 +2,10 @@
 
 ChatGPT: https://chat.openai.com/chat
 
+### Quick Play:
+
+- Temp GH page: http://tmcarmichael.com/testing-chatgpt-2d-game/
+
 ### Contents:
 
 - index.html: basic boilerplate html
