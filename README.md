@@ -2,10 +2,10 @@
 
 ChatGPT: https://chat.openai.com/chat
 
-Contents:
+### Contents:
 
 - index.html: basic boilerplate html
 - styles.css: minimal styles
 - generatedGameLoop.js: generated ChatGPT output with minimal modification
 
-The JS logic is a mess and that's ok. I generated and organized this a couple hours for fun and to see ChatGPT's code ability. Yes, the JS could be cleaned significantly.
+This code is generated and organized in a couple hours to test ChatGPT's use as a coding tool. Yes, the JS could be cleaned significantly.
