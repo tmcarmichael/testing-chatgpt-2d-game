@@ -6,8 +6,16 @@ const ctx = canvas.getContext("2d");
 const startScreen = document.getElementById("startScreen");
 const startButton = document.getElementById("startButton");
 
+// Get the score and lives div elements
+const scoreDiv = document.getElementById("score");
+const livesDiv = document.getElementById("lives");
+const speedDiv = document.getElementById("speed");
+
 // Set up the countdown timer
 let countdown = 4;
+
+// Score
+let score = 0;
 
 // Attach a click event listener to the start button
 startButton.addEventListener("click", () => {
@@ -21,7 +29,7 @@ startButton.addEventListener("click", () => {
 let greenSquares = [];
 
 // Set up game variables
-let lives = 1; // Number of lives the player has remaining
+let lives = 3; // Number of lives the player has remaining
 let gameOver = false; // Flag to track if the game is over
 
 // Set up a timer to create a new green square every 3 seconds
@@ -121,7 +129,8 @@ function updatePosition() {
   let asteroidCollision = checkAsteroidCollision(x, y, asteroids);
   if (asteroidCollision) {
     // If an asteroid collison is detected end the game
-    lives--;
+    lives -= 1;
+    livesDiv.innerHTML = "Lives: " + parseInt(lives);
   }
 
   // Check if the square is colliding with a green square
@@ -129,16 +138,20 @@ function updatePosition() {
   if (collision) {
     // If a collision is detected, activate the speed boost
     speedBoostActive = true;
-    speed = 1;
+    speed += 0.5;
+    speedDiv.innerHTML = "Speed: " + parseInt(speed);
+    score += 1;
+    scoreDiv.innerHTML = "Score: " + parseInt(score);
 
     // Set a timer to deactivate the speed boost after 3 seconds
-    setTimeout(deactivateSpeedBoost, 3000);
+    setTimeout(deactivateSpeedBoost, 5000);
   }
 }
 
 function deactivateSpeedBoost() {
   speedBoostActive = false;
-  speed = 0.5;
+  speed -= 0.5;
+  speedDiv.innerHTML = "Speed: " + speed.toString();
 }
 
 class GreenSquare {
@@ -186,6 +199,8 @@ function checkAsteroidCollision(redX, redY, ast) {
     // Check if any border of square1 is touching any border of square2
     if (redX < a.x + 10 && redX + 10 > a.x && redY < a.y + 10 && 10 + redY > a.y) {
       // Collision detected!
+      // Remove the asteroid from the asteroids array
+      asteroids = asteroids.filter((obj) => obj.x !== a.x);
       return true;
     }
   }
@@ -270,6 +285,8 @@ function showEndScreen() {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2);
+  ctx.font = "30px sans-serif";
+  ctx.fillText(`Score: ${score} `, canvas.width / 2, canvas.height / 2 + 40);
 }
 
 // Function to draw updates to canvas
@@ -299,7 +316,7 @@ function draw() {
   if (lives === 0) {
     gameOver = true; // Set the game over flag
     showEndScreen(); // Show the end screen
-
+    score = 0;
     // startScreen.style.display = "flex";
     return; // Stop the rest of the function from running
   }

@@ -3,7 +3,7 @@ body {
 }
 
 canvas {
-  border: 1px solid black;
+  border: 2px solid black;
   background-color: rgb(34, 34, 34);
   position: absolute;
   top: 50%;
@@ -25,11 +25,24 @@ canvas {
 
 #startScreen h1 {
   font-size: 32px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: bold;
   color: rgb(237, 166, 33);
   position: absolute;
   top: 40%;
   left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+#startScreen h2 {
+  font-size: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  color: rgb(132, 86, 0);
+  position: absolute;
+  top: 55%;
+  left: 52%;
   transform: translate(-50%, -50%);
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
 }
@@ -65,4 +78,34 @@ canvas {
 
 .button-grow:hover {
   transform: scale(1.1);
+}
+
+#score {
+  color: #ff9603;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 24px;
+  position: absolute;
+  top: 07%;
+  left: 75%;
+  /* text-shadow: 0 2px 2px rgba(0, 0, 0, 0.635); */
+}
+
+#lives {
+  color: #ff9603;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 24px;
+  position: absolute;
+  top: 04%;
+  left: 75%;
+  /* text-shadow: 0 2px 2px rgba(0, 0, 0, 0.635); */
+}
+
+#speed {
+  color: #ff9603;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 24px;
+  position: absolute;
+  top: 10%;
+  left: 75%;
+  /* text-shadow: 0 2px 2px rgba(0, 0, 0, 0.635); */
 }
